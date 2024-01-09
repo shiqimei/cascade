@@ -33,39 +33,49 @@
             </div>
         </div>
     </nav>
-    <div class="main h-[calc(100vh-50px)] flex">
-        <div
-            class="h-[150px] profile-container bg-white overflow-hidden flex items-center p-2 border border-color-[rgb(208, 215, 222)] rounded m-2">
-            <img class="user-profile-avatar w-[120px] h-[120px] rounded-full md:w-32 md:h-32 object-cover shadow-[0_0_0_1px_rgb(0,0,0,0.3)]"
-                src="path-to-avatar.jpg" alt="Profile Avatar">
-            <div class="user-profile-info ml-5">
-                <h2 class="user-profile-username text-2xl font-bold text-gray-800">Username</h2>
-                <p class="user-profile-bio text-gray-600">This user has no bio...</p>
-                <div class="flex mt-2">
-                    <div class="flex items-center mr-4 text-sm">
-                        <i class="fas fa-user-friends text-gray-600 mr-1"></i>
-                        <span class="ml-1 text-gray-600 text-sm"><span class="user-profile-followers">0</span>
-                            followers</span>
-                    </div>
-                    <div class="flex items-center text-sm">
-                        <i class="fas fa-user-plus text-gray-600 mr-1"></i>
-                        <span class="ml-1 text-gray-600 text-sm"><span class="user-profile-following">0</span>
-                            following</span>
+    <div class="main h-[calc(100vh-50px)] flex flex-col">
+        <div class="controls px-2 flex flex-row-reverse">
+            <a type="button"
+                class="max-w-[320px] px-4 mt-4 mr-4 flex items-center justify-center py-2 text-sm font-medium text-white bg-black rounded-md hover:bg-gray-800 focus:outline-none focus:ring-2 focus:ring-gray-400 focus:ring-opacity-75 cursor-pointer"
+                href="{{ github_installation_url }}">
+                <i class="fab fa-github mr-2"></i>
+                <span>Configure GitHub Connection</span>
+            </a>
+        </div>
+        <div class="github-panels">
+            <div
+                class="h-[150px] profile-container bg-white overflow-hidden flex items-center p-2 border border-color-[rgb(208, 215, 222)] rounded m-2">
+                <img class="user-profile-avatar w-[120px] h-[120px] rounded-full md:w-32 md:h-32 object-cover shadow-[0_0_0_1px_rgb(0,0,0,0.3)]"
+                    src="path-to-avatar.jpg" alt="Profile Avatar">
+                <div class="user-profile-info ml-5">
+                    <h2 class="user-profile-username text-2xl font-bold text-gray-800">Username</h2>
+                    <p class="user-profile-bio text-gray-600">This user has no bio...</p>
+                    <div class="flex mt-2">
+                        <div class="flex items-center mr-4 text-sm">
+                            <i class="fas fa-user-friends text-gray-600 mr-1"></i>
+                            <span class="ml-1 text-gray-600 text-sm"><span class="user-profile-followers">0</span>
+                                followers</span>
+                        </div>
+                        <div class="flex items-center text-sm">
+                            <i class="fas fa-user-plus text-gray-600 mr-1"></i>
+                            <span class="ml-1 text-gray-600 text-sm"><span class="user-profile-following">0</span>
+                                following</span>
+                        </div>
                     </div>
                 </div>
             </div>
-        </div>
-        <div
-            class="h-[150px] repo-container bg-white overflow-hidden flex flex-col items-start p-4 border border-[rgb(208,215,222)] rounded m-2 w-full max-w-md">
-            <h3 class="text-xl font-semibold mb-4">Select a Repository</h3>
-            <select
-                class="w-full p-2 rounded border border-gray-300 focus:border-blue-500 focus:ring focus:ring-blue-200 focus:ring-opacity-50 text-gray-700"
-                id="repositorySelect" name="repository">
-                <option value="">Loading repository list...</option>
-                <!-- Dynamically filled options will go here -->
-            </select>
-            <span class="ml-1 text-gray-600 text-sm mt-3"><span class="repos-count">0</span>
-                in total</span>
+            <div
+                class="h-[150px] repo-container bg-white overflow-hidden flex flex-col items-start p-4 border border-[rgb(208,215,222)] rounded m-2 w-full max-w-md">
+                <h3 class="text-xl font-semibold mb-4">Select a Repository</h3>
+                <select
+                    class="w-full p-2 rounded border border-gray-300 focus:border-blue-500 focus:ring focus:ring-blue-200 focus:ring-opacity-50 text-gray-700"
+                    id="repositorySelect" name="repository">
+                    <option value="">Loading repository list...</option>
+                    <!-- Dynamically filled options will go here -->
+                </select>
+                <span class="ml-1 text-gray-600 text-sm mt-3"><span class="repos-count">0</span>
+                    in total</span>
+            </div>
         </div>
     </div>
 </body>

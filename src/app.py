@@ -33,6 +33,13 @@ def index():
         callback_url=os.environ.get('GITHUB_OAUTH_CALLBACK_URL')
     )
 
+@app.route('/dashboard')
+def dashboard():
+    github_app_id = os.environ.get('GITHUB_APP_NAME')
+    return render_template('dashboard.html',
+        github_installation_url=f'https://github.com/apps/{github_app_id}/installations/select_target'
+    )
+
 @app.route('/login')
 def login():
     """
@@ -52,10 +59,6 @@ def login():
         'jwt': jwt,
         'avatar': '/static/images/avatar.jpeg'
     })
-
-@app.route('/dashboard')
-def dashboard():
-    return render_template('dashboard.html')
 
 @app.route('/favicon.ico')
 def favicon():
