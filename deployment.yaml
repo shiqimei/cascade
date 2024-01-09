@@ -1,0 +1,40 @@
+apiVersion: apps/v1
+kind: Deployment
+metadata:
+  name: cascade-chat-deployment
+  namespace: cascade-chat
+  labels:
+    app: cascade-chat
+spec:
+  replicas: 1
+  selector:
+    matchLabels:
+      app: cascade-chat
+  template:
+    metadata:
+      labels:
+        app: cascade-chat
+    spec:
+      containers:
+      - name: cascade-chat-container
+        image: 544018208436.dkr.ecr.us-west-1.amazonaws.com/cascade-chat:latest
+        ports:
+        - containerPort: 80
+        envFrom:
+        - secretRef:
+            name: deployment-secret
+
+---
+apiVersion: v1
+kind: Service
+metadata:
+  name: cascade-chat-service
+  namespace: cascade-chat
+spec:
+  selector:
+    app: cascade-chat
+  ports:
+  - protocol: TCP
+    port: 80
+    targetPort: 80
+  type: LoadBalancer

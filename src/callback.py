@@ -32,7 +32,6 @@ def callback():
         access_token = resp_json.get('access_token')
         # Handle the access token (e.g., fetch user info, authenticate user, etc.)
         # For the purpose of this example, we'll just return the token
-        print('Referrer URL: ', request.url)
         if access_token:
             # Connect to the database and update the access token
             conn = create_connection()

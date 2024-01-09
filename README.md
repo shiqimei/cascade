@@ -18,6 +18,13 @@ docker build -t cascade .
 docker run -p 8080:80 cascade
 ```
 
+Keep secrets secure
+
+```bash
+kubectl create namespace cascade-chat
+poetry run buildpoetry run build_secret_yaml && kubectl apply -f deployment-secret.yaml
+```
+
 #### Notes
 
 1. **For VSCode Users:** Make sure correct python interpreter is selected with `Python: Select Interpreter`.

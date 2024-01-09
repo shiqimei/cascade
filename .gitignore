@@ -2,4 +2,4 @@
 __pycache__
 .env
 database.db
-src/keys/github-app-private-key.pem
+deployment-secret.yaml

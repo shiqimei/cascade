@@ -2,14 +2,7 @@ from github import Github, Auth, GithubIntegration
 from flask_jwt_extended import get_jwt_identity
 from src.database import create_connection, query_user
 import os
-
-def read_private_key(file_path):
-    try:
-        with open(file_path, 'r') as file:
-            return file.read()
-    except IOError as e:
-        print(f"Error reading the private key file: {e}")
-        return None
+import base64
 
 class GitHubUser:
     """
@@ -72,7 +65,13 @@ class GitHubAppInstallations:
 
     def __init__(self):
         self.app_id = os.environ.get('GITHUB_APP_ID')
-        self.private_key = read_private_key('src/keys/github-app-private-key.pem')
+
+        private_key_base64 = os.getenv('GITHUB_APP_PRIVATE_KEY_BASE64')
+        if private_key_base64 is None:
+            raise ValueError('The GITHUB_APP_PRIVATE_KEY_BASE64 environment variable is not set')
+
+        private_key = base64.b64decode(private_key_base64).decode('utf-8')
+        self.private_key = private_key
         self.installations = []
 
     def __enter__(self):
