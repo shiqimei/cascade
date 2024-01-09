@@ -10,55 +10,76 @@
     <link href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.2.0/css/all.min.css" rel="stylesheet">
 </head>
 
-<body class="flex justify-center items-center h-screen bg-gradient-to-r from-blue-200 via-white to-white">
-    <div class="flex items-center justify-center w-1/2">
-        <div class="text-center">
-            <img src="favicon.ico" alt="logo" class="block mx-auto mb-4 h-48" />
-            <h2 class="text-2xl font-semibold mb-4">Cascade</h2>
-            <p class="text-md my-4 text-[#444444] max-w-md">A GitHub App designed to streamline your workflow through
-                seamless authorization and integration.</p>
+<body class="h-screen bg-gradient-to-r from-blue-200 via-white to-white">
+    <nav class="bg-white border border-color-gray-100 border-bottom max-h-[50px]">
+        <div class="max-w-6xl mx-auto">
+            <div class="flex justify-between">
+                <div class="flex space-x-3">
+                    <div>
+                        <a href="#" class="flex items-center py-2">
+                            <img src="favicon.ico" alt="Logo" class="h-8 w-8 mr-2" />
+                        </a>
+                    </div>
+                </div>
+                <div class="hidden md:flex items-center space-x-3 ">
+                    <div class="flex items-center space-x-4">
+                        <img class="h-8 w-8 rounded-full" src="avatar.jpeg" alt="User Avatar" />
+                        <span class="text-gray-500">Shiqi Mei</span>
+                    </div>
+                </div>
+            </div>
         </div>
-    </div>
-    <div class="w-px bg-gray-100 h-[80vh]"></div>
-    <div class="p-6 max-w-sm mx-auto rounded-xl shadow-md text-center bg-[#fafafa] border border-color-[#eaeaea]">
-        <h2 class="text-lg font-semibold mb-4">Connect to Services</h2>
-        <p class="text-md my-4 text-[#444444]">Select a Git provider to import an existing project from a Git
-            Repository.</p>
-        <div class="space-y-2">
-            <!-- GitHub Button -->
-            <a type="button"
-                class="relative flex items-center justify-center w-full px-4 py-2 text-sm font-medium text-white bg-black rounded-md hover:bg-gray-800 focus:outline-none focus:ring-2 focus:ring-gray-400 focus:ring-opacity-75 cursor-pointer"
-                href="https://github.com/login/oauth/authorize?client_id={{ client_id }}&redirect_uri={{ callback_url }}"
-            >
-                <i class="fab fa-github absolute left-4 transform -translate-y-1/2 top-1/2"></i>
-                <span class="ml-8">Connect to GitHub</span>
-            </a>
-            <!-- Jira Button -->
-            <button type="button"
-                class="relative flex items-center justify-center w-full px-4 py-2 text-sm font-medium text-white bg-blue-500 rounded-md hover:bg-blue-700 focus:outline-none focus:ring-2 focus:ring-blue-400 focus:ring-opacity-75">
-                <i class="fab fa-jira absolute left-4 transform -translate-y-1/2 top-1/2"></i>
-                <span class="ml-8">Connect to Jira</span>
-            </button>
-            <!-- GitLab Button -->
-            <button type="button"
-                class="relative flex items-center justify-center w-full px-4 py-2 text-sm font-medium text-white bg-yellow-500 rounded-md hover:bg-yellow-700 focus:outline-none focus:ring-2 focus:ring-yellow-400 focus:ring-opacity-75">
-                <i class="fab fa-gitlab absolute left-4 transform -translate-y-1/2 top-1/2"></i>
-                <span class="ml-8">Connect to GitLab</span>
-            </button>
-            <!-- Bitbucket Button -->
-            <button type="button"
-                class="relative flex items-center justify-center w-full px-4 py-2 text-sm font-medium text-white bg-blue-600 rounded-md hover:bg-blue-800 focus:outline-none focus:ring-2 focus:ring-blue-400 focus:ring-opacity-75">
-                <i class="fab fa-bitbucket absolute left-4 transform -translate-y-1/2 top-1/2"></i>
-                <span class="ml-8">Connect to Bitbucket</span>
-            </button>
-            <!-- CodeCommit Button -->
-            <button type="button"
-                class="relative flex items-center justify-center w-full px-4 py-2 text-sm font-medium text-white bg-purple-600 rounded-md hover:bg-purple-800 focus:outline-none focus:ring-2 focus:ring-purple-400 focus:ring-opacity-75">
-                <i class="fas fa-code-branch absolute left-4 transform -translate-y-1/2 top-1/2"></i>
-                <span class="ml-8">Connect to CodeCommit</span>
-            </button>
+    </nav>
+    <div class="main h-[calc(100vh-50px)] flex justify-center items-center">
+        <div class="flex items-center justify-center w-1/2">
+            <div class="text-center">
+                <img src="favicon.ico" alt="logo" class="block mx-auto mb-4 h-48" />
+                <h2 class="text-2xl font-semibold mb-4">Cascade</h2>
+                <p class="text-md my-4 text-[#444444] max-w-md">A GitHub App designed to streamline your workflow
+                    through
+                    seamless authorization and integration.</p>
+            </div>
         </div>
+        <div class="w-px bg-gray-100 h-[80vh]"></div>
+        <div class="p-6 max-w-sm mx-auto rounded-xl shadow-md text-center bg-[#fafafa] border border-color-[#eaeaea]">
+            <h2 class="text-lg font-semibold mb-4">Connect to Services</h2>
+            <p class="text-md my-4 text-[#444444]">Select a Git provider to import an existing project from a Git
+                Repository.</p>
+            <div class="space-y-2">
+                <!-- GitHub Button -->
+                <a type="button"
+                    class="relative flex items-center justify-center w-full px-4 py-2 text-sm font-medium text-white bg-black rounded-md hover:bg-gray-800 focus:outline-none focus:ring-2 focus:ring-gray-400 focus:ring-opacity-75 cursor-pointer"
+                    href="https://github.com/login/oauth/authorize?client_id={{ client_id }}&redirect_uri={{ callback_url }}">
+                    <i class="fab fa-github absolute left-4 transform -translate-y-1/2 top-1/2"></i>
+                    <span class="ml-8">Connect to GitHub</span>
+                </a>
+                <!-- Jira Button -->
+                <button type="button"
+                    class="relative flex items-center justify-center w-full px-4 py-2 text-sm font-medium text-white bg-blue-500 rounded-md hover:bg-blue-700 focus:outline-none focus:ring-2 focus:ring-blue-400 focus:ring-opacity-75">
+                    <i class="fab fa-jira absolute left-4 transform -translate-y-1/2 top-1/2"></i>
+                    <span class="ml-8">Connect to Jira</span>
+                </button>
+                <!-- GitLab Button -->
+                <button type="button"
+                    class="relative flex items-center justify-center w-full px-4 py-2 text-sm font-medium text-white bg-yellow-500 rounded-md hover:bg-yellow-700 focus:outline-none focus:ring-2 focus:ring-yellow-400 focus:ring-opacity-75">
+                    <i class="fab fa-gitlab absolute left-4 transform -translate-y-1/2 top-1/2"></i>
+                    <span class="ml-8">Connect to GitLab</span>
+                </button>
+                <!-- Bitbucket Button -->
+                <button type="button"
+                    class="relative flex items-center justify-center w-full px-4 py-2 text-sm font-medium text-white bg-blue-600 rounded-md hover:bg-blue-800 focus:outline-none focus:ring-2 focus:ring-blue-400 focus:ring-opacity-75">
+                    <i class="fab fa-bitbucket absolute left-4 transform -translate-y-1/2 top-1/2"></i>
+                    <span class="ml-8">Connect to Bitbucket</span>
+                </button>
+                <!-- CodeCommit Button -->
+                <button type="button"
+                    class="relative flex items-center justify-center w-full px-4 py-2 text-sm font-medium text-white bg-purple-600 rounded-md hover:bg-purple-800 focus:outline-none focus:ring-2 focus:ring-purple-400 focus:ring-opacity-75">
+                    <i class="fas fa-code-branch absolute left-4 transform -translate-y-1/2 top-1/2"></i>
+                    <span class="ml-8">Connect to CodeCommit</span>
+                </button>
+            </div>
 
+        </div>
     </div>
 </body>
 
