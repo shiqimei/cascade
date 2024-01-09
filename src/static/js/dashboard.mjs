@@ -21,6 +21,7 @@ async function updateUserProfile() {
 async function updateRepos() {
     const response = await userFetch('/api/github/authorized_repos');
     const { data: repos } = await response.json();
+    console.log('repos: ', repos)
     const select = document.getElementById('repositorySelect');
     document.querySelector('.repos-count').textContent = repos.length
     for (const repo of repos) {

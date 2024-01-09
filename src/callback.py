@@ -43,7 +43,7 @@ def callback():
                 return redirect(url_for('dashboard'))
             else:
                 # Redirect to installation page
-                github_app_id = os.environ.get('GITHUB_APP_ID')
+                github_app_id = os.environ.get('GITHUB_APP_NAME')
                 return redirect(f'https://github.com/apps/{github_app_id}/installations/select_target', 302)
         else:
             # Handle error response

@@ -1,6 +1,6 @@
 from flask import Blueprint, jsonify
 from src.database import query_user, create_connection
-from src.github import GitHubUser
+from src.github import GitHubAppInstallations, GitHubUser
 from flask_jwt_extended import jwt_required, get_jwt_identity
 
 rest_apis_blueprint = Blueprint('rest_apis', __name__)
@@ -23,14 +23,13 @@ def get_github_user():
 
 @rest_apis_blueprint.route('/api/github/authorized_repos')
 @jwt_required()
-def get_github_orgs():
+def get_github_app_authorized_repos():
     try:
         repos = []
-        with GitHubUser() as github_user:
-            for repo in github_user.get_user().get_repos():
-              if repo.permissions.admin:
+        with GitHubAppInstallations() as installations:
+            for installation in installations:
+                for repo in installation.get_repos():
                     repos.append(repo.full_name)
         return jsonify({ 'error': None, 'data': repos }), 200
-
     except Exception as e:
         return jsonify({ 'error': str(e), 'data': None }), 500
