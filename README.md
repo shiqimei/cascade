@@ -4,4 +4,5 @@
 
 ```bash
 poetry install
+poetry run dev
 ```
