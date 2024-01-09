@@ -1,5 +1,6 @@
 from flask import Flask, g, render_template, send_from_directory, jsonify
 from flask_jwt_extended import JWTManager, create_access_token, jwt_required, get_jwt_identity
+from flask_socketio import SocketIO
 from dotenv import load_dotenv
 from src.callback import github_callback_blueprint
 from src.database import init_database, create_connection, query_user
@@ -10,17 +11,16 @@ load_dotenv()
 app = Flask(__name__)
 app.config['JWT_SECRET_KEY'] = os.environ.get('JWT_SECRET_KEY')
 jwt = JWTManager(app)
+socketio = SocketIO(app)
 
 app.register_blueprint(github_callback_blueprint)
 
 with app.app_context():
     init_database()
 
-@app.teardown_appcontext
-def teardown_db(exception):
-    db = g.pop('db_connection', None)
-    if db is not None:
-        db.close()
+@socketio.on('message', namespace='/ws')
+def handle_message(message):
+    print('received message: ' + message)
 
 @app.route('/')
 def index():
@@ -65,7 +65,7 @@ def favicon():
     return send_from_directory('static', 'images/logo.png')
 
 def dev():
-    app.run(debug=True, host='0.0.0.0', port=8080)
+    socketio.run(app, debug=True, host='0.0.0.0', port=8080)
 
 if __name__ == '__main__':
     dev()

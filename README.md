@@ -7,7 +7,8 @@ A GitHub App designed to streamline your workflow through seamless authorization
 ```bash
 poetry install
 poetry run dev
-poetry run gunicorn -b 0.0.0.0:8080 src.app:app
+poetry run gunicorn -k geventwebsocket.gunicorn.workers.GeventWebSocketWorker -w 1 -b 0.0.0.0:8080 src.app:app
+
 ```
 
 ## Production Deployment

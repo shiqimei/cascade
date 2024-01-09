@@ -30,7 +30,7 @@ def insert_default_user(conn):
         cursor = conn.cursor()
         userid = 'shiqimei'
         user_jwt = create_access_token(identity=userid)
-        cursor.execute("INSERT INTO users (userid, username, jwt) VALUES (?, ?, ?)", (
+        cursor.execute("INSERT OR IGNORE INTO  users (userid, username, jwt) VALUES (?, ?, ?)", (
             userid,
             'Shiqi Mei',
             user_jwt
