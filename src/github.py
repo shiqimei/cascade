@@ -2,7 +2,7 @@ from github import Github, Auth
 from flask_jwt_extended import get_jwt_identity
 from src.database import create_connection, query_user
 
-class GithubInstance:
+class GitHubUser:
     """
     A context manager for creating and managing a Github instance with a user-specific access token.
 

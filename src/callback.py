@@ -9,6 +9,8 @@ github_callback_blueprint = Blueprint('github_callback', __name__)
 def callback():
     # Retrieve the code from the callback query parameters
     code = request.args.get('code')
+    installation_id = request.args.get('installation_id')
+    setup_action = request.args.get('setup_action') # install | update
     if not code:
         return jsonify({'error': 'Missing code parameter'}), 400
 
@@ -30,13 +32,19 @@ def callback():
         access_token = resp_json.get('access_token')
         # Handle the access token (e.g., fetch user info, authenticate user, etc.)
         # For the purpose of this example, we'll just return the token
+        print('Referrer URL: ', request.url)
         if access_token:
             # Connect to the database and update the access token
             conn = create_connection()
             update_github_access_token(conn, 'shiqimei', access_token)
 
-            # Redirect to the dashboard
-            return redirect(url_for('dashboard'))
+            if installation_id:
+                # Redirect to the dashboard
+                return redirect(url_for('dashboard'))
+            else:
+                # Redirect to installation page
+                github_app_id = os.environ.get('GITHUB_APP_ID')
+                return redirect(f'https://github.com/apps/{github_app_id}/installations/select_target', 302)
         else:
             # Handle error response
             return jsonify(response.json()), response.status_code
