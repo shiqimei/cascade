@@ -6,8 +6,8 @@ app = Flask(__name__)
 def index():
     return "Hello, Flask!"
 
-def main():
-    app.run(debug=True)
+def dev():
+    app.run(debug=True, port=8080)
 
 if __name__ == '__main__':
-    main()
+    dev()

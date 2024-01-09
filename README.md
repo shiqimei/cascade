@@ -1,6 +1,6 @@
 # GitHub App Demo
 
-## Development
+## Local Development
 
 ```bash
 poetry install
@@ -8,7 +8,7 @@ poetry run dev
 poetry run gunicorn -b 0.0.0.0:8080 src.app:app
 ```
 
-## Deploy
+## Production Deployment
 
 ```bash
 docker build -t github-app-demo .
