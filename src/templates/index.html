@@ -6,13 +6,15 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Connect to Services</title>
     <link rel="icon" type="image/x-icon" href="https://sourcegraph.com/favicon.png">
-    <link href="https://cdn.jsdelivr.net/npm/tailwindcss@2.2.19/dist/tailwind.min.css" rel="stylesheet">
+    <script src="https://cdn.tailwindcss.com"></script>
     <link href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.2.0/css/all.min.css" rel="stylesheet">
 </head>
 
-<body class="flex justify-center items-center h-screen bg-gray-100">
-    <div class="p-6 max-w-sm mx-auto bg-white rounded-xl shadow-md text-center">
+<body class="flex justify-center items-center h-screen bg-white">
+    <div class="p-6 max-w-sm mx-auto rounded-xl shadow-md text-center bg-[#fafafa] border border-color-[#eaeaea]">
         <h2 class="text-lg font-semibold mb-4">Connect to Services</h2>
+        <p class="text-md my-4 text-[#444444]">Select a Git provider to import an existing project from a Git
+            Repository.</p>
         <div class="space-y-2">
             <!-- GitHub Button -->
             <button type="button"
