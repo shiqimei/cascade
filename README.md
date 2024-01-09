@@ -21,4 +21,5 @@ docker run -p 8080:80 cascade
 #### Notes
 
 1. **For VSCode Users:** Make sure correct python interpreter is selected with `Python: Select Interpreter`.
-2. Generate a new `JWT_SECRET_KEY`, use command `poetry run jwt`
+2. Generate a new `JWT_SECRET_KEY` or `GITHUB_WEBHOOK_SECRET`, use command `poetry run secret`
+3. Reverse proxy local port for testing: [pinggy.io](https://pinggy.io/)

@@ -3,6 +3,7 @@ from flask_jwt_extended import JWTManager, create_access_token, jwt_required, ge
 from flask_socketio import SocketIO
 from dotenv import load_dotenv
 from src.callback import github_callback_blueprint
+from src.webhook import github_webhook_blueprint
 from src.database import init_database, create_connection, query_user
 import os
 
@@ -14,13 +15,14 @@ jwt = JWTManager(app)
 socketio = SocketIO(app)
 
 app.register_blueprint(github_callback_blueprint)
+app.register_blueprint(github_webhook_blueprint)
 
 with app.app_context():
     init_database()
 
 @socketio.on('message', namespace='/ws')
 def handle_message(message):
-    print('received message: ' + message)
+    print('[client] ' + message)
 
 @app.route('/')
 def index():
@@ -65,7 +67,8 @@ def favicon():
     return send_from_directory('static', 'images/logo.png')
 
 def dev():
-    socketio.run(app, debug=True, host='0.0.0.0', port=8080)
+    port = 8080
+    socketio.run(app, debug=True, host='0.0.0.0', port=port)
 
 if __name__ == '__main__':
     dev()

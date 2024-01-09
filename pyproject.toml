@@ -23,4 +23,4 @@ build-backend = "poetry.core.masonry.api"
 
 [tool.poetry.scripts]
 dev = "src.app:dev"
-jwt = "scripts.generate-jwt-secret:main"
+secret = "scripts.generate-secret:main"
