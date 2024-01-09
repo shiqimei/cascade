@@ -1,4 +1,6 @@
-# GitHub App Demo
+# Cascade
+
+A GitHub App designed to streamline your workflow through seamless authorization and integration.
 
 ## Local Development
 
@@ -11,8 +13,8 @@ poetry run gunicorn -b 0.0.0.0:8080 src.app:app
 ## Production Deployment
 
 ```bash
-docker build -t github-app-demo .
-docker run -p 8080:80 github-app-demo
+docker build -t cascade .
+docker run -p 8080:80 cascade
 ```
 
 #### Notes
