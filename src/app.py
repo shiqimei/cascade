@@ -46,7 +46,7 @@ def login():
         'userid': userid,
         'username': username,
         'jwt': jwt,
-        'avatar': '/avatar.jpeg'
+        'avatar': '/static/images/avatar.jpeg'
     })
 
 @app.route('/dashboard')
@@ -62,11 +62,7 @@ def protected():
 
 @app.route('/favicon.ico')
 def favicon():
-    return send_from_directory('assets', 'logo.png')
-
-@app.route('/avatar.jpeg')
-def avatar():
-    return send_from_directory('assets', 'avatar.jpeg')
+    return send_from_directory('static', 'images/logo.png')
 
 def dev():
     app.run(debug=True, host='0.0.0.0', port=8080)

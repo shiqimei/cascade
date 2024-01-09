@@ -23,7 +23,8 @@
                 </div>
                 <div class="hidden md:flex items-center space-x-3 ">
                     <div class="flex items-center space-x-4">
-                        <img class="h-8 w-8 rounded-full" src="avatar.jpeg" alt="User Avatar" />
+                        <img class="h-8 w-8 rounded-full" src="{{ url_for('static', filename='images/avatar.jpeg') }}"
+                            alt="User Avatar" />
                         <span class="text-gray-500">Shiqi Mei</span>
                     </div>
                 </div>
@@ -31,6 +32,7 @@
         </div>
     </nav>
     <div class="main h-[calc(100vh-50px)] flex justify-center items-center"></div>
+    <script type="module" src="{{ url_for('static', filename='js/dashboard.mjs') }}"></script>
 </body>
 
 </html>
