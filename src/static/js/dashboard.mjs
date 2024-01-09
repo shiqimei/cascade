@@ -19,11 +19,14 @@ async function updateUserProfile() {
 }
 
 async function updateRepos() {
+    const start = Date.now()
     const response = await userFetch('/api/github/authorized_repos');
     const { data: repos } = await response.json();
+    console.log('[fetch repos] duration: ', Date.now() - start + 'ms')
     console.log('repos: ', repos)
     const select = document.getElementById('repositorySelect');
     document.querySelector('.repos-count').textContent = repos.length
+    select.removeChild(select.children[0])
     for (const repo of repos) {
         const option = new Option(repo, repo);
         select.add(option);
