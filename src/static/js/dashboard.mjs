@@ -18,4 +18,16 @@ async function updateUserProfile() {
     }
 }
 
+async function updateRepos() {
+    const response = await userFetch('/api/github/repos');
+    const { data: repos } = await response.json();
+    const select = document.getElementById('repositorySelect');
+    document.querySelector('.repos-count').textContent = repos.length
+    for (const repo of repos) {
+        const option = new Option(repo, repo);
+        select.add(option);
+    }
+}
+
 updateUserProfile()
+updateRepos()

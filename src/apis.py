@@ -21,16 +21,15 @@ def get_github_user():
     except Exception as e:
         return jsonify({ "error": str(e), "data": None }), 500
 
-@rest_apis_blueprint.route('/api/github/orgs')
+@rest_apis_blueprint.route('/api/github/repos')
 @jwt_required()
 def get_github_orgs():
     try:
-        orgs = []
+        repos = []
         with GithubInstance() as github:
-            for org in github.get_user().get_followers():
-                print('org', org)
-                orgs.append(org.login)
-        return jsonify({ "error": None, "data": { "orgs": orgs } }), 200
+            for repo in github.get_user().get_repos():
+                repos.append(repo.full_name)
+        return jsonify({ 'error': None, 'data': repos }), 200
 
     except Exception as e:
-        return jsonify({ "error": str(e), "data": None }), 500
+        return jsonify({ 'error': str(e), 'data': None }), 500

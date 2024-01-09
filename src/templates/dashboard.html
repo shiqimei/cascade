@@ -34,8 +34,10 @@
         </div>
     </nav>
     <div class="main h-[calc(100vh-50px)] flex">
-        <div class="h-[150px] profile-container bg-white overflow-hidden flex items-center p-2 border border-color-[rgb(208, 215, 222)] rounded m-2">
-            <img class="user-profile-avatar w-[120px] h-[120px] rounded-full md:w-32 md:h-32 object-cover shadow-[0_0_0_1px_rgb(0,0,0,0.3)]" src="path-to-avatar.jpg" alt="Profile Avatar">
+        <div
+            class="h-[150px] profile-container bg-white overflow-hidden flex items-center p-2 border border-color-[rgb(208, 215, 222)] rounded m-2">
+            <img class="user-profile-avatar w-[120px] h-[120px] rounded-full md:w-32 md:h-32 object-cover shadow-[0_0_0_1px_rgb(0,0,0,0.3)]"
+                src="path-to-avatar.jpg" alt="Profile Avatar">
             <div class="user-profile-info ml-5">
                 <h2 class="user-profile-username text-2xl font-bold text-gray-800">Username</h2>
                 <p class="user-profile-bio text-gray-600">This user has no bio...</p>
@@ -47,13 +49,25 @@
                     </div>
                     <div class="flex items-center text-sm">
                         <i class="fas fa-user-plus text-gray-600 mr-1"></i>
-                        <span class="ml-1 text-gray-600 text-sm"><span class="user-profile-following">0</span> following</span>
+                        <span class="ml-1 text-gray-600 text-sm"><span class="user-profile-following">0</span>
+                            following</span>
                     </div>
                 </div>
             </div>
         </div>
+        <div
+            class="h-[150px] repo-container bg-white overflow-hidden flex flex-col items-start p-4 border border-[rgb(208,215,222)] rounded m-2 w-full max-w-md">
+            <h3 class="text-xl font-semibold mb-4">Select a Repository</h3>
+            <select
+                class="w-full p-2 rounded border border-gray-300 focus:border-blue-500 focus:ring focus:ring-blue-200 focus:ring-opacity-50 text-gray-700"
+                id="repositorySelect" name="repository">
+                <option value="">Select a repository...</option>
+                <!-- Dynamically filled options will go here -->
+            </select>
+            <span class="ml-1 text-gray-600 text-sm mt-3"><span class="repos-count">0</span>
+                in total</span>
+        </div>
     </div>
-
 </body>
 
 </html>
