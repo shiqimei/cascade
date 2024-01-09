@@ -13,4 +13,4 @@ COPY . /app
 
 EXPOSE 80
 
-CMD ["poetry", "run", "gunicorn", "-b", "0.0.0.0:80", "src.app:app"]
+CMD ["poetry", "run", "gunicorn", "-k", "geventwebsocket.gunicorn.workers.GeventWebSocketWorker", "-w", "1", "-b", "0.0.0.0:80", "src.app:app"]

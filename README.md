@@ -11,11 +11,11 @@ poetry run gunicorn -k geventwebsocket.gunicorn.workers.GeventWebSocketWorker -w
 
 ```
 
-## Production Deployment
+## Local Docker Build & Preview
 
 ```bash
-docker build -t cascade .
-docker run -p 8080:80 cascade
+docker build -t cascade-chat .
+docker run --env-file .env -p 8080:80 cascade-chat
 ```
 
 Keep secrets secure
@@ -23,6 +23,14 @@ Keep secrets secure
 ```bash
 kubectl create namespace cascade-chat
 poetry run buildpoetry run build_secret_yaml && kubectl apply -f deployment-secret.yaml
+```
+
+Push image to ECR & Deploy image on EKS
+
+```bash
+aws ecr create-repository --repository-name cascade-chat
+aws ecr get-login-password --region us-west-1 | docker login --username AWS --password-stdin 544018208436.dkr.ecr.us-west-1.amazonaws.com/cascade-chat
+docker tag cascade-chat:latest 544018208436.dkr.ecr.us-west-1.amazonaws.com/cascade-chat:latest
 ```
 
 #### Notes
