@@ -17,8 +17,8 @@ def create_table(conn):
             CREATE TABLE IF NOT EXISTS users (
                 userid TEXT PRIMARY KEY,
                 username TEXT,
-                github_access_token TEXT,
-                jwt TEXT
+                jwt TEXT,
+                github_access_token TEXT
             )
         """)
         conn.commit()
