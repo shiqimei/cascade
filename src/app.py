@@ -5,6 +5,7 @@ from dotenv import load_dotenv
 from src.callback import github_callback_blueprint
 from src.webhook import github_webhook_blueprint
 from src.database import init_database, create_connection, query_user
+from src.apis import rest_apis_blueprint
 import os
 
 load_dotenv()
@@ -16,6 +17,7 @@ socketio = SocketIO(app)
 
 app.register_blueprint(github_callback_blueprint)
 app.register_blueprint(github_webhook_blueprint)
+app.register_blueprint(rest_apis_blueprint)
 
 with app.app_context():
     init_database()
@@ -54,13 +56,6 @@ def login():
 @app.route('/dashboard')
 def dashboard():
     return render_template('dashboard.html')
-
-@app.route('/protected', methods=['GET'])
-@jwt_required()
-def protected():
-    # Access the identity of the current user with get_jwt_identity
-    current_user = get_jwt_identity()
-    return jsonify(logged_in_as=current_user), 200
 
 @app.route('/favicon.ico')
 def favicon():

@@ -1,7 +1,7 @@
 from flask import Blueprint, request, jsonify, redirect, url_for
 import os
 import requests
-from src.database import create_connection, update_access_token, query_user
+from src.database import create_connection, update_github_access_token, query_user
 
 github_callback_blueprint = Blueprint('github_callback', __name__)
 
@@ -33,7 +33,7 @@ def callback():
         if access_token:
             # Connect to the database and update the access token
             conn = create_connection()
-            update_access_token(conn, 'shiqimei', access_token)
+            update_github_access_token(conn, 'shiqimei', access_token)
 
             # Redirect to the dashboard
             return redirect(url_for('dashboard'))

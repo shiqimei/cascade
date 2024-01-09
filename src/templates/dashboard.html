@@ -9,6 +9,7 @@
     <script src="https://cdn.tailwindcss.com"></script>
     <link href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.2.0/css/all.min.css" rel="stylesheet">
     <script src="https://cdn.socket.io/4.0.0/socket.io.min.js"></script>
+    <script type="module" src="{{ url_for('static', filename='js/dashboard.mjs') }}"></script>
 </head>
 
 <body class="h-screen bg-white">
@@ -32,8 +33,27 @@
             </div>
         </div>
     </nav>
-    <div class="main h-[calc(100vh-50px)] flex justify-center items-center"></div>
-    <script type="module" src="{{ url_for('static', filename='js/dashboard.mjs') }}"></script>
+    <div class="main h-[calc(100vh-50px)] flex justify-center items-center">
+        <div class="profile-container bg-white shadow-lg rounded-lg overflow-hidden flex">
+            <img class="user-profile-avatar w-24 h-24 md:w-32 md:h-32 object-cover" src="path-to-avatar.jpg" alt="Profile Avatar">
+            <div class="p-4">
+                <h2 class="user-profile-username text-lg md:text-2xl text-gray-800">Shiqi Mei</h2>
+                <p class="user-profile-bio text-gray-600"></p>
+                <div class="flex mt-2">
+                    <div class="flex items-center mr-4">
+                        <i class="fas fa-user-friends text-gray-600 mr-2"></i>
+                        <span class="ml-1 text-gray-600 text-sm"><span class="user-profile-followers">0</span>
+                            followers</span>
+                    </div>
+                    <div class="flex items-center">
+                        <i class="fas fa-user-plus text-gray-600 mr-2"></i>
+                        <span class="ml-1 text-gray-600 text-sm"><span class="user-profile-following">0</span> following</span>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+
 </body>
 
 </html>

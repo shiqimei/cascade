@@ -29,7 +29,7 @@ def insert_default_user(conn):
     try:
         cursor = conn.cursor()
         userid = 'shiqimei'
-        user_jwt = create_access_token(identity=userid)
+        user_jwt = create_access_token(identity=userid, expires_delta=False)
         cursor.execute("INSERT OR IGNORE INTO  users (userid, username, jwt) VALUES (?, ?, ?)", (
             userid,
             'Shiqi Mei',
@@ -39,7 +39,7 @@ def insert_default_user(conn):
     except Error as e:
         print(e)
 
-def update_access_token(conn, userid, token):
+def update_github_access_token(conn, userid, token):
     try:
         cursor = conn.cursor()
         cursor.execute("UPDATE users SET github_access_token = ? WHERE userid = ?", (token, userid))
