@@ -19,4 +19,5 @@ docker run -p 8080:80 cascade
 
 #### Notes
 
-**For VSCode Users:** Make sure correct python interpreter is selected with `Python: Select Interpreter`.
+1. **For VSCode Users:** Make sure correct python interpreter is selected with `Python: Select Interpreter`.
+2. Generate a new `JWT_SECRET_KEY`, use command `poetry run jwt`

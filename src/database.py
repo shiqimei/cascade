@@ -1,5 +1,6 @@
 import sqlite3
 from sqlite3 import Error
+from flask_jwt_extended import create_access_token
 
 def create_connection():
     try:
@@ -9,20 +10,31 @@ def create_connection():
         print(e)
 
 def create_table(conn):
+    """Create a users table in the SQLite database."""
     try:
         cursor = conn.cursor()
-        cursor.execute("""CREATE TABLE users (
-                          userid TEXT PRIMARY KEY,
-                          username TEXT,
-                          github_access_token TEXT
-                          )""")
+        cursor.execute("""
+            CREATE TABLE IF NOT EXISTS users (
+                userid TEXT PRIMARY KEY,
+                username TEXT,
+                github_access_token TEXT,
+                jwt TEXT
+            )
+        """)
+        conn.commit()
     except Error as e:
         print(e)
 
 def insert_default_user(conn):
     try:
         cursor = conn.cursor()
-        cursor.execute("INSERT INTO users (userid, username) VALUES ('shiqimei', 'Shiqi Mei')")
+        userid = 'shiqimei'
+        user_jwt = create_access_token(identity=userid)
+        cursor.execute("INSERT INTO users (userid, username, jwt) VALUES (?, ?, ?)", (
+            userid,
+            'Shiqi Mei',
+            user_jwt
+        ))
         conn.commit()
     except Error as e:
         print(e)
