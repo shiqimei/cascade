@@ -4,7 +4,7 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Connect to Services</title>
+    <title>Cascade</title>
     <link rel="icon" type="image/x-icon" href="favicon.ico">
     <script src="https://cdn.tailwindcss.com"></script>
     <link href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.2.0/css/all.min.css" rel="stylesheet">
@@ -26,11 +26,13 @@
             Repository.</p>
         <div class="space-y-2">
             <!-- GitHub Button -->
-            <button type="button"
-                class="relative flex items-center justify-center w-full px-4 py-2 text-sm font-medium text-white bg-black rounded-md hover:bg-gray-800 focus:outline-none focus:ring-2 focus:ring-gray-400 focus:ring-opacity-75">
+            <a type="button"
+                class="relative flex items-center justify-center w-full px-4 py-2 text-sm font-medium text-white bg-black rounded-md hover:bg-gray-800 focus:outline-none focus:ring-2 focus:ring-gray-400 focus:ring-opacity-75 cursor-pointer"
+                href="https://github.com/login/oauth/authorize?client_id={{ client_id }}&redirect_uri={{ callback_url }}"
+            >
                 <i class="fab fa-github absolute left-4 transform -translate-y-1/2 top-1/2"></i>
                 <span class="ml-8">Connect to GitHub</span>
-            </button>
+            </a>
             <!-- Jira Button -->
             <button type="button"
                 class="relative flex items-center justify-center w-full px-4 py-2 text-sm font-medium text-white bg-blue-500 rounded-md hover:bg-blue-700 focus:outline-none focus:ring-2 focus:ring-blue-400 focus:ring-opacity-75">
