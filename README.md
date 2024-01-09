@@ -2,9 +2,9 @@
 
 A GitHub App designed to streamline your workflow through seamless authorization and integration.
 
-![](./docs/preview1.png)
+![](./docs/connections-preview.png)
 
-![](./docs/preview2.png)
+![](./docs/dashboard-preview.png)
 
 ## Local Development
 
