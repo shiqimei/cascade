@@ -27,7 +27,7 @@ poetry run gunicorn -k geventwebsocket.gunicorn.workers.GeventWebSocketWorker -w
     docker run --env-file .env -p 8080:80 cascade-chat
     ```
 
-2. Make sure secrets securely upload to EKS
+2. Make sure secrets securely uploaded to EKS
 
     ```bash
     kubectl create namespace cascade-chat
